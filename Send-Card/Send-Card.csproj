@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BlagoCard.cs" />
     <Compile Include="FreeCard.cs" />
+    <Compile Include="PayerData.cs" />
     <Compile Include="TempMail.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

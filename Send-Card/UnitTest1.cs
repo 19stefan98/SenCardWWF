@@ -15,11 +15,11 @@ namespace Send_Card
             driver = new ChromeDriver();
         }
 
-        //[TearDown] // вызывается после каждого теста
-        //public void TearDown()
-        //{
-        //    driver.Quit();
-        //}
+        [TearDown] // вызывается после каждого теста
+        public void TearDown()
+        {
+            driver.Quit();
+        }
 
         [Test]
         public void FreeCard()
@@ -31,14 +31,23 @@ namespace Send_Card
 
             TempMail mail = new TempMail(driver, fo.nmail);
             mail.Action();
+
             Assert.AreEqual(mail.pruf, actual);
         }
 
         [Test]
         public void BlagoCard()
-        {
-            BlagoCard fo = new BlagoCard(driver);
-            fo.Action();
+        { 
+            BlagoCard fo1 = new BlagoCard(driver);
+            fo1.Action();
+
+            string actual2 = "400.00 РУБ";
+
+            PayerData form = new PayerData(driver);
+            form.Action();
+
+            Assert.AreEqual(form.text, actual2);
         }
+
     }
 }

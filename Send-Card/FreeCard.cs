@@ -50,8 +50,8 @@ namespace Send_Card
             var date = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.Name("date")));
             date.SendKeys("21.02.2018");
             date.Submit();
-            driver.SwitchTo().Window(driver.WindowHandles.ToList().Last());
-            Text = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\"fancybox-lock\"]/div/div[1]/div/div/div[2]"))).Text;
+            //driver.SwitchTo().Window(driver.WindowHandles.ToList().Last());
+            //Text = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\"fancybox-lock\"]/div/div[1]/div/div/div[2]"))).Text;
         }
     }
 }

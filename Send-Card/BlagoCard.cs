@@ -9,7 +9,6 @@ namespace Send_Card
     {
         public IWebDriver driver { get; set; }
         public string nmail { get; set; }
-        public string Text { get; set; }
         TimeSpan timeout = new TimeSpan(00, 00, 15);
         Random rand = new Random();
 
@@ -29,8 +28,11 @@ namespace Send_Card
                 nmail += Convert.ToChar(rand.Next(97, 122));
             }
 
-            var click = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.ClassName("gcl-card-item")));
-            click.Click();
+            var click = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@class=\"layout-content\"]/div/div/div[1]/a[1]")));
+            click.Click();                                                                                            //*[@id="global-content"]/div/div[2]/div[2] 
+
+            var clickPuch = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.ClassName("df-submit")));
+            clickPuch.Click();
 
             var email = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.Name("email_to")));
             email.SendKeys(nmail + "@send22u.info");
@@ -50,6 +52,8 @@ namespace Send_Card
             var date = (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.Name("date")));
             date.SendKeys("21.02.2018");
             date.Submit();
+            var batton= (new WebDriverWait(driver, timeout)).Until(ExpectedConditions.ElementIsVisible(By.ClassName("is-button-a")));
+            batton.Click();
         }
     }
 }
